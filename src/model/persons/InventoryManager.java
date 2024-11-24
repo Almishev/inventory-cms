@@ -96,7 +96,7 @@ public class InventoryManager extends ItemViewer {
         return items;
     }
 
-    public static boolean validateManagerCredentials(String username, String password) throws IOException, Exception {
+    public static boolean validateManagerCredentials(String username, String password) throws  Exception {
         try (BufferedReader reader = new BufferedReader(new FileReader("managers.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {

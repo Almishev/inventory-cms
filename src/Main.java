@@ -20,7 +20,6 @@ public class Main {
             return;
         }
 
-
         CustomerController customerController = new CustomerController();
         InventoryManagerController managerController = new InventoryManagerController();
 

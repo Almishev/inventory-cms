@@ -6,4 +6,4 @@ Glass, glass for wine, FRAGILE, 4.0, false, true, 10
 Mug, Mugs for Coffe and Tea, FRAGILE, 4.0, false, true, 40
 Banichka, Bulgarian breakfast, GROCERY, 2.0, true, false, 30
 Bread, Bg standart, GROCERY, 2.0, true, false, 29
-Wine, Merlo with Syhra, GROCERY, 25.0, false, true, 102
+Wine, Merlo with Syhra, GROCERY, 25.0, true, false, 1
