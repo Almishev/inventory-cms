@@ -1,6 +1,6 @@
-package repository;
+package model.interfaces;
 
-import model.InventoryItem;
+import model.products.InventoryItem;
 
 import java.util.List;
 

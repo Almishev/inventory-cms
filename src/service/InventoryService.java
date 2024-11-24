@@ -1,7 +1,7 @@
 package service;
 
-import model.InventoryItem;
-import repository.ItemRepository;
+import model.products.InventoryItem;
+import model.interfaces.ItemRepository;
 
 import java.util.List;
 

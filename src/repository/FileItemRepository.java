@@ -1,7 +1,7 @@
 package repository;
 
-import model.Category;
-import model.InventoryItem;
+import model.products.InventoryItem;
+import model.interfaces.ItemRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,13 +21,14 @@ public class FileItemRepository implements ItemRepository {
         if (!file.exists()) {
             try {
                 if (file.createNewFile()) {
-                    System.out.println("Файлът " + filePath + " беше създаден.");
+                    System.out.println("Файлът " + filePath + " беше създаден успешно.");
                 }
             } catch (IOException e) {
-                System.err.println("Неуспешно създаване на файл: " + e.getMessage());
+                System.err.println("Грешка при създаването на файл: " + e.getMessage());
             }
         }
     }
+
 
     @Override
     public List<InventoryItem> loadItems() {
@@ -35,13 +36,18 @@ public class FileItemRepository implements ItemRepository {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                items.add(InventoryItem.fromString(line));
+                try {
+                    items.add(InventoryItem.fromString(line));
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Грешка при четене на елемент: " + line + ". Пропускане.");
+                }
             }
         } catch (IOException e) {
-            System.err.println("Неуспешно четене на файла: " + e.getMessage());
+            System.err.println("Грешка при четене на файла: " + e.getMessage());
         }
         return items;
     }
+
 
     @Override
     public void saveItems(List<InventoryItem> items) {
@@ -51,7 +57,7 @@ public class FileItemRepository implements ItemRepository {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.err.println("Неуспешен запис във файла: " + e.getMessage());
+            System.err.println("Грешка при запис във файла: " + e.getMessage());
         }
     }
 }

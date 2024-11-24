@@ -1,3 +1,4 @@
-Apples,Green apples from bulgarian fermers,GROCERY,2.0,false,false,10
-Pineapple,Fresh fruits from Africa with frog sign,GROCERY,3.0,false,false,3
-Laptop,Laptop for Gaming Lenovo 2001,OTHER,500.0,false,false,1
+Pineapple, Fresh fruits from Africa with frog sign, GROCERY, 3.0, false, false, 3
+Apples, Green apples from bulgarian farmers, GROCERY, 2.0, false, false, 10
+Laptop, Laptop for Gaming Lenovo 2001, ELECTRONICS, 500.0, false, false, 1
+Mirror, White mirror for living room, FRAGILE, 100.0, false, true, 5
