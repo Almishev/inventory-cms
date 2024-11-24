@@ -17,12 +17,11 @@ public class InventoryManager extends ItemViewer {
 
     public void addItemToFile(InventoryItem item, String filename) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
-            writer.write(item.toString() + "\n");
-            items.add(item);
-            System.out.println("Item added to file: " + item.getName());
+            writer.write(item.getName() + ", " + item.getDescription() + ", " + item.getCategory() + ", " + item.getPrice() + ", " + item.isPerishable() + ", " + item.isBreakable() + ", " + item.getQuantity());
+            writer.newLine();
+
         } catch (IOException e) {
-            System.out.println("Error writing item to file.");
-            e.printStackTrace();
+            System.out.println("Error writing to file: " + e.getMessage());
         }
     }
 
@@ -35,7 +34,10 @@ public class InventoryManager extends ItemViewer {
             boolean removed = false;
 
             while ((line = reader.readLine()) != null) {
-                if (!line.contains(itemName)) {
+
+                String itemInFile = line.split(",")[0].trim();
+
+                if (!itemInFile.equals(itemName)) {
                     lines.add(line);
                 } else {
                     removed = true;
@@ -45,17 +47,21 @@ public class InventoryManager extends ItemViewer {
             if (removed) {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
                 for (String l : lines) {
-                    writer.write(l + "\n");
+                    writer.write(l + "\n"); // Записваме останалите редове в файла
                 }
+                writer.close();
                 System.out.println("Item removed from file: " + itemName);
             } else {
                 System.out.println("Item not found: " + itemName);
             }
+
+            reader.close();
         } catch (IOException e) {
             System.out.println("Error reading or writing to file.");
             e.printStackTrace();
         }
     }
+
 
 
     public void loadItemsFromFile(String filename) throws IOException {
@@ -160,6 +166,79 @@ public class InventoryManager extends ItemViewer {
             System.out.println("Changes saved successfully.");
         } else {
             System.out.println("Error updating managers file.");
+        }
+    }
+
+
+    public static void updateItemPriceInFile(InventoryItem updatedItem, String filename) {
+        List<String> lines = new ArrayList<>();
+        boolean itemUpdated = false;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String itemName = line.split(",")[0].trim();
+
+                if (itemName.equalsIgnoreCase(updatedItem.getName())) {
+
+                    line = updatedItem.getName() + ", " + updatedItem.getDescription() + ", " +
+                            updatedItem.getCategory() + ", " + updatedItem.getPrice() + ", " +
+                            updatedItem.isPerishable() + ", " + updatedItem.isBreakable() + ", " + updatedItem.getQuantity();
+                    itemUpdated = true;
+                }
+
+                lines.add(line);
+            }
+
+            if (itemUpdated) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+                    for (String updatedLine : lines) {
+                        writer.write(updatedLine + "\n");
+                    }
+                }
+                System.out.println("Price updated successfully in file.");
+            } else {
+                System.out.println("Item not found in file.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading or writing to file: " + e.getMessage());
+        }
+    }
+
+    public static void updateItemQuantityInFile(InventoryItem updatedItem, String filename) {
+        List<String> lines = new ArrayList<>();
+        boolean itemUpdated = false;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String itemName = line.split(",")[0].trim();
+
+                if (itemName.equalsIgnoreCase(updatedItem.getName())) {
+
+                    line = updatedItem.getName() + ", " + updatedItem.getDescription() + ", " +
+                            updatedItem.getCategory() + ", " + updatedItem.getPrice() + ", " +
+                            updatedItem.isPerishable() + ", " + updatedItem.isBreakable() + ", " + updatedItem.getQuantity();
+                    itemUpdated = true;
+                }
+
+                lines.add(line);
+            }
+
+            if (itemUpdated) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+                    for (String updatedLine : lines) {
+                        writer.write(updatedLine + "\n");
+                    }
+                }
+                System.out.println("Quantity updated successfully in file.");
+            } else {
+                System.out.println("Item not found in file.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading or writing to file: " + e.getMessage());
         }
     }
 

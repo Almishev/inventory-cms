@@ -29,7 +29,6 @@ public class FileItemRepository implements ItemRepository {
         }
     }
 
-
     @Override
     public List<InventoryItem> loadItems() {
         List<InventoryItem> items = new ArrayList<>();

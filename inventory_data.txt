@@ -2,3 +2,8 @@ Pineapple, Fresh fruits from Africa with frog sign, GROCERY, 3.0, false, false, 
 Apples, Green apples from bulgarian farmers, GROCERY, 2.0, false, false, 10
 Laptop, Laptop for Gaming Lenovo 2001, ELECTRONICS, 500.0, false, false, 1
 Mirror, White mirror for living room, FRAGILE, 100.0, false, true, 5
+Glass, glass for wine, FRAGILE, 4.0, false, true, 10
+Mug, Mugs for Coffe and Tea, FRAGILE, 4.0, false, true, 40
+Banichka, Bulgarian breakfast, GROCERY, 2.0, true, false, 30
+Bread, Bg standart, GROCERY, 2.0, true, false, 29
+Wine, Merlo with Syhra, GROCERY, 25.0, false, true, 102

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CustomerController {
 
-    private Customer customer;
+    private final Customer customer;
 
     public CustomerController() {
         this.customer = new Customer();
