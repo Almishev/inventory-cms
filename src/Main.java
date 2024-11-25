@@ -25,9 +25,9 @@ public class Main {
 
         int roleChoice;
 
-        System.out.println("Welcome to the Inventory Management System!");
-        System.out.println("1. Login as Customer");
-        System.out.println("2. Login as Manager");
+        System.out.println("System.out.println(&quot;Welcome to the E-commerce Console Application!");
+        System.out.println("1. Enter as Customer");
+        System.out.println("2. Enter as Shop Worker");
         System.out.print("Choose your role (1 or 2): ");
         roleChoice = scanner.nextInt();
         scanner.nextLine();

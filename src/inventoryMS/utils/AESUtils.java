@@ -18,7 +18,6 @@ public class AESUtils {
         return keyGen.generateKey();
     }
 
-    // Криптиране
     public static String encrypt(String data, SecretKey secretKey) throws Exception {
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
