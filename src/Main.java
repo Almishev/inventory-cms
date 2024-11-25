@@ -1,6 +1,6 @@
-import controller.CustomerController;
-import controller.InventoryManagerController;
-import model.persons.InventoryManager;
+import inventoryMS.controller.CustomerController;
+import inventoryMS.controller.InventoryManagerController;
+import inventoryMS.model.persons.InventoryManager;
 
 import java.io.IOException;
 import java.util.Scanner;
